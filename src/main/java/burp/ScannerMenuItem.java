@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -79,7 +80,7 @@ class ScannerMenuItem implements IContextMenuFactory {
                     }
 
                     //export the vuln as an XML file
-                    File reportFile = File.createTempFile("xml", "report");
+                    File reportFile = Files.createTempFile("xml", "report").toFile();
                     IScanIssue[] reportIssue = {issue};
                     callbacks.generateScanReport("XML", reportIssue, reportFile);
 
